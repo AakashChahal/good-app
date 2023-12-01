@@ -2,6 +2,13 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import { useState } from "react";
+import colors from "./colors";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./Login";
+import Register from "./Register";
+import HomePage from "./HomePage";
+import UserContext from "./context/userContext";
+import NoMatch from "./components/NoMatch";
 
 function App() {
     // Get theme from browser preference
@@ -10,9 +17,19 @@ function App() {
             ? "dark"
             : "light"
     );
+    const [user, setUser] = useState(null);
 
     return (
-        <div className={`App App-${theme}`}>
+        <div
+            className={`App`}
+            style={{
+                backgroundColor:
+                    theme === "dark"
+                        ? colors.darkBackground
+                        : colors.lightBackground,
+                color: theme === "dark" ? colors.darkText : colors.lightText,
+            }}
+        >
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
                 <a className="App-link" href="/" rel="noopener noreferrer">
@@ -32,25 +49,27 @@ function App() {
                 </label>
             </header>
 
-            <div className="App-body">
-                <p>
-                    <a
-                        className="App-link"
-                        href="/bad-app"
-                        rel="noopener noreferrer"
-                    >
-                        Bad App
-                    </a>
-                </p>
-                <p>
-                    <a
-                        className="App-link"
-                        href="/good-app"
-                        rel="noopener noreferrer"
-                    >
-                        Good App
-                    </a>
-                </p>
+            <div
+                className="App-body"
+                style={{
+                    textAlign: "center",
+                    marginTop: "50%",
+                    transform: "translateY(-50%)",
+                    justifyContent: "center",
+                    width: "100%",
+                }}
+            >
+                <UserContext.Provider value={{ user, setUser }}>
+                    <Router>
+                        <Routes>
+                            <Route path="" element={<Login />} />
+                            <Route path="login" element={<Login />} />
+                            <Route path="register" element={<Register />} />
+                            <Route path="home" element={<HomePage />} />
+                            <Route path="*" element={<NoMatch />} />
+                        </Routes>
+                    </Router>
+                </UserContext.Provider>
             </div>
         </div>
     );

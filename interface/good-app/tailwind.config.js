@@ -8,4 +8,7 @@ module.exports = {
         extend: {},
     },
     plugins: [require("flowbite/plugin")],
+    resolve: {
+        modules: ["./node_modules", "node_modules"],
+    },
 };
