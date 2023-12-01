@@ -26,7 +26,7 @@ function App() {
                             setTheme(e.target.checked ? "dark" : "light");
                         }}
                     />
-                    <span className="App-slider round">
+                    <span className={`App-slider round ${theme}`}>
                         {theme === "dark" ? "dark" : "light"}
                     </span>
                 </label>

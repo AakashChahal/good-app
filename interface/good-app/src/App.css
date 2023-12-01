@@ -19,14 +19,7 @@
     position: absolute;
     top: 1rem;
     left: 1rem;
-    /* animation: App-logo-spin infinite 20s linear; */
 }
-
-/* @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-} */
 
 .App-header {
     background-color: #282a34;
@@ -64,6 +57,32 @@
     bottom: 0;
     background-color: #ccc;
     transition: 0.4s;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 34px;
+    padding: 0 0.5rem;
+}
+
+.dark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: white;
+    text-align: left;
+    font-size: 0.6rem;
+}
+
+.light {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: black;
+    text-align: right;
+    font-size: 0.6rem;
 }
 
 .App-slider:before {
@@ -102,16 +121,36 @@ input:checked + .App-slider:before {
     text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
 .App-body {
     height: 92vmin;
     display: flex;
+}
+
+/* Media queries for responsive design */
+@media only screen and (max-width: 600px) {
+    .App-header {
+        height: 12vh;
+    }
+
+    .App-switch {
+        right: 0.5rem;
+    }
+
+    .App-slider {
+        font-size: 0.6rem;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .App-header {
+        height: 10vh;
+    }
+
+    .App-switch {
+        right: 0.8rem;
+    }
+
+    .App-slider {
+        font-size: 0.6rem;
+    }
 }
