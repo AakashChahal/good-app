@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap");
+
 .App {
     text-align: center;
     max-height: 100vh;
@@ -12,6 +14,24 @@
     position: absolute;
     top: 1rem;
     left: 1rem;
+}
+
+.error-404 {
+    font-family: "Rubik Bubbles", sans-serif;
+    font-size: 10rem;
+    color: #000;
+
+    @media only screen and (max-width: 600px) {
+        font-size: 5rem;
+    }
+
+    @media only screen and (min-width: 601px) and (max-width: 1024px) {
+        font-size: 7rem;
+    }
+
+    @media only screen and (min-width: 1025px) and (max-width: 1440px) {
+        font-size: 8rem;
+    }
 }
 
 .App-header {
