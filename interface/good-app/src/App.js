@@ -9,9 +9,10 @@ import Register from "./Register";
 import HomePage from "./HomePage";
 import UserContext from "./context/userContext";
 import NoMatch from "./components/NoMatch";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 
 function App() {
-    // Get theme from browser preference
     const [theme, setTheme] = useState(
         window.matchMedia("(prefers-color-scheme: dark)").matches
             ? "dark"
@@ -32,10 +33,35 @@ function App() {
         >
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
-                <a className="App-link" href="/" rel="noopener noreferrer">
+                <a
+                    className="App-link"
+                    href="/"
+                    rel="noopener noreferrer"
+                    style={{
+                        color:
+                            theme === "dark"
+                                ? colors.darkInteractiveElement
+                                : colors.lightInteractiveElement,
+                    }}
+                >
                     Good App
                 </a>
                 <label className="App-switch">
+                    {theme === "light" ? (
+                        <LightModeIcon
+                            className="App-light-mode-icon"
+                            style={{
+                                color: colors.lightWarning,
+                            }}
+                        />
+                    ) : (
+                        <DarkModeIcon
+                            className="App-dark-mode-icon"
+                            style={{
+                                color: colors.darkSecondaryBackground,
+                            }}
+                        />
+                    )}
                     <input
                         type="checkbox"
                         checked={theme === "dark"}
@@ -43,7 +69,15 @@ function App() {
                             setTheme(e.target.checked ? "dark" : "light");
                         }}
                     />
-                    <span className={`App-slider round ${theme}`}>
+                    <span
+                        className={`App-slider round ${theme}`}
+                        style={{
+                            backgroundColor:
+                                theme === "dark"
+                                    ? colors.lightAccent
+                                    : colors.darkAccent,
+                        }}
+                    >
                         {theme === "dark" ? "dark" : "light"}
                     </span>
                 </label>

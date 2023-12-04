@@ -128,6 +128,22 @@ input:checked + .App-slider:before {
     border-radius: 50%;
 }
 
+.App-light-mode-icon {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 8%;
+    transform: translateY(-50%);
+}
+
+.App-dark-mode-icon {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    right: 8%;
+    transform: translateY(-50%);
+}
+
 .App-link {
     color: #61dafb;
     text-decoration: none;
